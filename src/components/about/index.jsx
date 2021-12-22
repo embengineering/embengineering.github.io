@@ -6,7 +6,8 @@ import PersonalInfo from "./PersonalInfo";
 import Skills from "./Skills";
 
 const config = {
-  resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub'
+  resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub',
+  imgMobile: 'https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-4.jpg',
 };
 
 const index = () => {
@@ -27,7 +28,7 @@ const index = () => {
 
               <div className="col-12 d-block d-sm-none">
                 <img
-                  src="img/hero/img-mobile.jpg"
+                  src={config.imgMobile}
                   className="img-fluid main-img-mobile"
                   alt="about avatar"
                 />
