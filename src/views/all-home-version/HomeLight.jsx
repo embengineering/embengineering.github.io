@@ -3,7 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Hero from "../../components/hero/HeroLight";
 import Index from "../../components/about/index";
 import Address from "../../components/Address";
-import Portfolio from "../../components/portfolio/PortfolioLight";
 import Blog from "../../components/blog/BlogLight";
 import Contact from "../../components/Contact";
 import Social from "../../components/Social";
@@ -12,9 +11,7 @@ import AnimatedCursor from "react-animated-cursor";
 const menuItem = [
   { icon: "fa-home", menuName: "Home" },
   { icon: "fa-user", menuName: "About" },
-  { icon: "fa-briefcase", menuName: "Portfolio" },
   { icon: "fa-envelope-open", menuName: "Contact" },
-  { icon: "fa-comments", menuName: "Blog" },
 ];
 
 const HomeLight = () => {
@@ -44,6 +41,11 @@ const HomeLight = () => {
                 <h2>{item.menuName}</h2>
               </Tab>
             ))}
+            {/*Add medium link following style and design but handling redirection with JavaScript*/}
+            <Tab className="icon-box" onClick={() => { document.location = "https://medium.embengineering.com"; return false;}}>
+              <i className={`fa fa-medium`}></i>
+              <h2>Blog</h2>
+            </Tab>
           </TabList>
         </div>
         {/* End Menu Content */}
@@ -77,31 +79,6 @@ const HomeLight = () => {
           </TabPanel>
           {/* About Content Ends */}
 
-          {/* Portfolio Content Starts */}
-          <TabPanel className="portfolio">
-            <div
-              className="title-section text-left text-sm-center"
-              data-aos="fade-up"
-              data-aos-duration="1200"
-            >
-              <h1>
-                my <span>portfolio</span>
-              </h1>
-              <span className="title-bg">works</span>
-            </div>
-            {/* End title */}
-            <div
-              className="container grid-gallery main-content"
-              data-aos="fade-up"
-              data-aos-duration="1200"
-              data-aos-delay="100"
-            >
-              <Portfolio />
-            </div>
-            {/* End grid gallery */}
-          </TabPanel>
-          {/* Portfolio Content Ends */}
-
           {/* Contact Content Starts */}
           <TabPanel className="contact">
             <div
@@ -121,14 +98,13 @@ const HomeLight = () => {
             >
               <div className="row">
                 {/*  Left Side Starts */}
-                <div className="col-12 col-lg-4">
+                <div className="offset-lg-4 col-lg-4">
                   <h3 className="text-uppercase custom-title mb-0 ft-wt-600 pb-3">
-                    Don't be shy !
+                    Contact me!
                   </h3>
                   <p className="open-sans-font mb-4">
                     Feel free to get in touch with me. I am always open to
-                    discussing new projects, creative ideas or opportunities to
-                    be part of your visions.
+                    hear about new opportunities to help others.
                   </p>
                   <Address />
                   {/* End Address */}
@@ -138,42 +114,11 @@ const HomeLight = () => {
                 </div>
                 {/* Left Side Ends */}
 
-                {/*  Contact Form Starts  */}
-                <div className="col-12 col-lg-8">
-                  <Contact />
-                </div>
-                {/*  Contact Form Ends */}
               </div>
             </div>
             {/* End .container */}
           </TabPanel>
           {/* Contact Content Ends */}
-
-          {/* Blog Content Starts */}
-          <TabPanel className="blog">
-            <div
-              className="title-section text-left text-sm-center "
-              data-aos="fade-up"
-              data-aos-duration="1200"
-            >
-              <h1>
-                my <span>blog</span>
-              </h1>
-              <span className="title-bg">posts</span>
-            </div>
-            <div
-              className="container"
-              data-aos="fade-up"
-              data-aos-duration="1200"
-            >
-              {/*  Articles Starts  */}
-              <div className="row pb-50">
-                <Blog />
-              </div>
-              {/* Articles Ends */}
-            </div>
-          </TabPanel>
-          {/* Blog Content Ends */}
         </div>
       </Tabs>
     </div>

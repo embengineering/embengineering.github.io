@@ -5,6 +5,10 @@ import Experience from "./Experience";
 import PersonalInfo from "./PersonalInfo";
 import Skills from "./Skills";
 
+const config = {
+  resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub'
+};
+
 const index = () => {
   return (
     <section className="main-content ">
@@ -36,8 +40,8 @@ const index = () => {
               {/* End personal info */}
 
               <div className="col-12 mt-1">
-                <a className="button" href="img/cv.webp" download>
-                  <span className="button-text">Download CV</span>
+                <a className="button" href={config.resumeLink} download>
+                  <span className="button-text">Download Resume</span>
                   <span className="button-icon fa fa-download"></span>
                 </a>
               </div>

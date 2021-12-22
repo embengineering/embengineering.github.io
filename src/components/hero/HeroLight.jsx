@@ -3,14 +3,11 @@ import Modal from "react-modal";
 import Index from "../about/index";
 
 const heroContent = {
-  heroImage: "img/hero/light.jpg",
-  heroMobileImage: "img-mobile-light",
-  heroTitleName: "lucy milner",
-  heroDesignation: "web designer",
-  heroDescriptions: `I'm a Tunisian based web designer & front‑end developer focused on
-  crafting clean & user‑friendly experiences, I am passionate about
-  building excellent software that improves the lives of those
-  around me.`,
+  heroImage: "https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-3.jpg",
+  heroMobileImage: "https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-3.jpg",
+  heroTitleName: "Emmanuel Morales",
+  heroDesignation: "Software Engineer & Life Enthusiast",
+  heroDescriptions: `I'm a high‐performing, strategic‐thinking professional with more than a decade of experience designing solutions for complex web-based business applications. Contributed to all levels of the development cycle, from obtaining requirements documenting, architecture, and delivering a quality approved solution. I'm passionate about building quality software that improves life, but also helping people avoid falling into the same challenges I've gone through in life.`,
   heroBtn: "more about me",
 };
 
@@ -34,7 +31,7 @@ const HeroLight = () => {
         <div className="col-12 col-lg-8 offset-lg-4 home-details  text-center text-lg-start">
           <div>
             <img
-              src={`img/hero/${heroContent.heroMobileImage}.jpg`}
+              src={heroContent.heroMobileImage}
               className="img-fluid main-img-mobile d-sm-block d-lg-none"
               alt="hero man"
             />
