@@ -3,8 +3,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Hero from "../../components/hero/HeroLight";
 import Index from "../../components/about/index";
 import Address from "../../components/Address";
-import Blog from "../../components/blog/BlogLight";
-import Contact from "../../components/Contact";
 import Social from "../../components/Social";
 import AnimatedCursor from "react-animated-cursor";
 
