@@ -7,7 +7,7 @@ import Skills from "./Skills";
 
 const config = {
   resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub',
-  imgMobile: 'https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-4.jpg',
+  imgMobile: 'https://res.cloudinary.com/embengineering/image/upload/v1640271417/bitmoji.png',
 };
 
 const index = () => {

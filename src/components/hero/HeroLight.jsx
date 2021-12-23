@@ -3,8 +3,8 @@ import Modal from "react-modal";
 import Index from "../about/index";
 
 const heroContent = {
-  heroImage: "https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-3.jpg",
-  heroMobileImage: "https://res.cloudinary.com/embengineering/image/upload/v1640193665/profile-pic-3.jpg",
+  heroImage: "https://res.cloudinary.com/embengineering/image/upload/v1640187021/profile-pic.jpg",
+  heroMobileImage: "https://res.cloudinary.com/embengineering/image/upload/v1640271417/bitmoji.png",
   heroTitleName: "Emmanuel Morales",
   heroDesignation: "Software Engineer & Life Enthusiast",
   heroDescriptions: `I'm a high‐performing, strategic‐thinking professional with more than a decade of experience designing solutions for complex web-based business applications. Contributed to all levels of the development cycle, from obtaining requirements documenting, architecture, and delivering a quality approved solution. I'm passionate about building quality software that improves life, but also helping people avoid falling into the same challenges I've gone through in life.`,
