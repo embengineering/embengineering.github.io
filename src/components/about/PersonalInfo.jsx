@@ -6,7 +6,6 @@ const personalInfoContent = [
   { meta: "Age", metaInfo: "35 Years" },
   { meta: "Nationality", metaInfo: "Puerto Rico" },
   { meta: "Address", metaInfo: "Frisco, TX" },
-  { meta: "phone", metaInfo: "972.626.3543" },
   { meta: "Email", metaInfo: "contact@embengineering.com" },
   { meta: "langages", metaInfo: "Spanish, English" },
 ];
