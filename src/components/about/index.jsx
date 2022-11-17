@@ -5,7 +5,7 @@ import Experience from "./Experience";
 import PersonalInfo from "./PersonalInfo";
 
 const config = {
-  resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub',
+  resumeLink: 'https://docs.google.com/document/d/1ym-bxUidiTAYle1zUQmcLBXnUymREU_YhGUjAPy9hWk/edit?usp=sharing',
   imgMobile: 'https://res.cloudinary.com/embengineering/image/upload/v1640271417/bitmoji.png',
 };
 
