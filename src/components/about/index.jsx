@@ -3,7 +3,6 @@ import Achievements from "./Achievements";
 import Education from "./Education";
 import Experience from "./Experience";
 import PersonalInfo from "./PersonalInfo";
-import Skills from "./Skills";
 
 const config = {
   resumeLink: 'https://docs.google.com/document/d/e/2PACX-1vQBIGaaX3EoLJrFK8MU8jx_eo8YEq_NDxFpOxbfZzbOR8TyB7v9A7eH32Jgpa9KpXhhXeoc_gG7JM3U/pub',
@@ -21,7 +20,7 @@ const index = () => {
             <div className="row">
               <div className="col-12">
                 <h3 className="text-uppercase custom-title mb-0 ft-wt-600">
-                  personal infos
+                  personal info
                 </h3>
               </div>
               {/* End .col */}
@@ -58,19 +57,6 @@ const index = () => {
           {/* Achievements Ends */}
         </div>
         {/* End .row */}
-
-        <hr className="separator" />
-
-        {/* Skills Starts */}
-        <div className="row">
-          <div className="col-12">
-            <h3 className="text-uppercase pb-4 pb-sm-5 mb-3 mb-sm-0 text-left text-sm-center custom-title ft-wt-600">
-              My Skills
-            </h3>
-          </div>
-          <Skills />
-        </div>
-        {/* Skills Ends */}
 
         <hr className="separator mt-1" />
 

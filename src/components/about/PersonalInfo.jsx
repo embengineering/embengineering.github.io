@@ -2,12 +2,10 @@ import React from "react";
 
 const personalInfoContent = [
   { meta: "first name", metaInfo: "Emmanuel" },
-  { meta: "last name", metaInfo: "Morales" },
-  { meta: "Age", metaInfo: "35 Years" },
-  { meta: "Nationality", metaInfo: "Puerto Rico" },
-  { meta: "Address", metaInfo: "Frisco, TX" },
+  { meta: "last name", metaInfo: "Morales Betancourt" },
+  { meta: "Location", metaInfo: "Frisco, TX" },
   { meta: "Email", metaInfo: "contact@embengineering.com" },
-  { meta: "langages", metaInfo: "Spanish, English" },
+  { meta: "Langages", metaInfo: "Spanish, English" },
 ];
 
 const PersonalInfo = () => {

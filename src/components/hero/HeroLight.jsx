@@ -1,22 +1,15 @@
-import React, { useState } from "react";
-import Modal from "react-modal";
-import Index from "../about/index";
+import React from "react";
 
 const heroContent = {
   heroImage: "https://res.cloudinary.com/embengineering/image/upload/v1640187021/profile-pic.jpg",
   heroMobileImage: "https://res.cloudinary.com/embengineering/image/upload/v1640271417/bitmoji.png",
   heroTitleName: "Emmanuel Morales",
   heroDesignation: "Software Engineer & Life Enthusiast",
-  heroDescriptions: `I'm a high‐performing, strategic‐thinking professional with more than a decade of experience designing solutions for complex web-based business applications. Contributed to all levels of the development cycle, from obtaining requirements documenting, architecture, and delivering a quality approved solution. I'm passionate about building quality software that improves life, but also helping people avoid falling into the same challenges I've gone through in life.`,
+  heroDescriptions: `High‐performing, strategic‐thinking professional with more than 15+ years of experience designing solutions for complex web-based applications to support business objectives and enhance how people live, work, and communicate. Contributed to all levels of the development cycle, from obtaining requirements, documenting, architecture, and delivering high-quality solutions. Experienced in building responsive cross-platform applications using the latest technologies such as HTML, CSS, JavaScript, React, TypeScript, .NET Core, C#, MSSQL, Web API, and Cloud, among others.`,
   heroBtn: "more about me",
 };
 
 const HeroLight = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  function toggleModalOne() {
-    setIsOpen(!isOpen);
-  }
-
   return (
     <>
       <div className="row home-details-container align-items-center">
@@ -40,46 +33,14 @@ const HeroLight = () => {
               <span>{heroContent.heroDesignation}</span>
             </h1>
             <p className="open-sans-font">{heroContent.heroDescriptions}</p>
-            <button className="button" onClick={toggleModalOne}>
+            {/* <button className="button" onClick={() => {}}>
               <span className="button-text">{heroContent.heroBtn}</span>
               <span className="button-icon fa fa-arrow-right"></span>
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
       {/* End home-details-container */}
-
-      {/* Start Modal for About More */}
-      <Modal
-        isOpen={isOpen}
-        onRequestClose={toggleModalOne}
-        contentLabel="My dialog"
-        className="custom-modal dark light"
-        overlayClassName="custom-overlay"
-        closeTimeoutMS={500}
-      >
-        <div>
-          <button className="close-modal" onClick={toggleModalOne}>
-            <img src="/img/cancel.svg" alt="close icon" />
-          </button>
-          {/* End close icon */}
-
-          <div className="box_inner about green">
-            <div data-aos="fade-up" data-aos-duration="1200">
-              <div className="title-section text-left text-sm-center">
-                <h1>
-                  ABOUT <span>ME</span>
-                </h1>
-                <span className="title-bg">Resume</span>
-              </div>
-              {/* End title */}
-              <Index />
-            </div>
-          </div>
-        </div>
-        {/* End modal box news */}
-      </Modal>
-      {/* End  Modal for About More */}
     </>
   );
 };
