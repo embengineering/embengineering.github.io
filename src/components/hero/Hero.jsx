@@ -9,7 +9,7 @@ const heroContent = {
   heroBtn: "more about me",
 };
 
-const Hero = () => {
+const Hero = ({ onClickHeroBtn }) => {
   return (
     <>
       <div className="row home-details-container align-items-center">
@@ -33,10 +33,10 @@ const Hero = () => {
               <span>{heroContent.heroDesignation}</span>
             </h1>
             <p className="open-sans-font">{heroContent.heroDescriptions}</p>
-            {/* <button className="button" onClick={() => {}}>
+            {onClickHeroBtn && <button className="button" onClick={onClickHeroBtn}>
               <span className="button-text">{heroContent.heroBtn}</span>
               <span className="button-icon fa fa-arrow-right"></span>
-            </button> */}
+            </button>}
           </div>
         </div>
       </div>
