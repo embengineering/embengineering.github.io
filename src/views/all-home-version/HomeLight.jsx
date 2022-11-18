@@ -16,6 +16,14 @@ const HomeLight = () => {
   const [tabSelected, setTabSelected] = useState(0);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [tabSelected]);
+
+  useEffect(() => {
     document.body.classList.add("light");
   }, []);
 

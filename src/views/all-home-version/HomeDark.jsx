@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Hero from "../../components/hero/Hero";
 import Index from "../../components/about/index";
@@ -13,6 +13,14 @@ const menuItem = [
 
 const HomeDark = () => {
   const [tabSelected, setTabSelected] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, [tabSelected]);
 
   return (
     <div className="yellow">
