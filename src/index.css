@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply font-sans antialiased text-gray-900 leading-normal tracking-wider bg-screen-image bg-cover;
+}
