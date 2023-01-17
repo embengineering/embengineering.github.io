@@ -1,0 +1,7 @@
+{
+    "ignorePaths": [
+      "node_modules/**"
+    ],
+    "allowCompoundWords": true,
+    "words": ["Betancourt"]
+  }
