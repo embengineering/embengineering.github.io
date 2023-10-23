@@ -1,11 +1,11 @@
-import { ISocialMediaLink } from './Home';
+export interface SocialMedia {
+  href: string;
+  title: string;
+  username: string;
+  svgPath: string;
+}
 
-const SocialMediaLink = ({
-  href,
-  title,
-  svgPath,
-  username,
-}: ISocialMediaLink) => {
+const SocialMediaLink = ({ href, title, svgPath, username }: SocialMedia) => {
   return (
     <a className="link" href={href} data-tippy-content={username}>
       <svg

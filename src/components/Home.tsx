@@ -1,25 +1,19 @@
 import { useEffect, useState } from 'react';
 import info from '../info.json';
-import SocialMediaLink from './SocialMediaLink';
+import SocialMediaLink, { SocialMedia } from './SocialMediaLink';
 
-interface IInfo {
+interface PersonalInfo {
   fullname: string;
   title: string;
   location: string;
-  description: string;
+  descriptionLine1: string;
+  descriptionLine2: string;
   email: string;
   resume: string;
-  social: ISocialMediaLink[];
+  social: SocialMedia[];
 }
 
-export interface ISocialMediaLink {
-  href: string;
-  title: string;
-  username: string;
-  svgPath: string;
-}
-
-const personalInfo: IInfo = info;
+const personalInfo: PersonalInfo = info;
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState<boolean>(true);
@@ -34,13 +28,13 @@ const Home = () => {
 
   return (
     <div className="max-w-7xl max-h-screen h-screen flex items-center justify-center px-6 mx-auto">
-      <div className="w-full lg:basis-2/3 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-gray-300 dark:bg-gray-900 text-gray-900 dark:text-gray-100 opacity-80">
+      <div className="w-full lg:basis-2/3 rounded-lg lg:rounded-l-lg  shadow-2xl bg-gray-300 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <div className="p-4 md:p-12 text-center lg:text-left">
           <div className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-profile-mobile"></div>
           <h1 className="text-3xl font-bold pt-8 lg:pt-0">
             {personalInfo.fullname}
           </h1>
-          <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+          <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500"></div>
           <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
             <svg
               className="h-4 fill-current text-green-700 pr-4"
@@ -62,9 +56,11 @@ const Home = () => {
             {personalInfo.location}
           </p>
           <p className="pt-8 text-sm hidden md:block">
-            {personalInfo.description}
+            {personalInfo.descriptionLine1}
+            <br />
+            <br />
+            {personalInfo.descriptionLine2}
           </p>
-
           <div className="pt-12 pb-8">
             <a
               className="bg-green-700 hover:bg-green-900 text-white font-bold py-4 px-6 rounded-full"
@@ -96,7 +92,7 @@ const Home = () => {
       </div>
       <div className="fixed top-2 right-2">
         <button
-          className="rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-900 hover:bg-grey text-grey-darkest font-bold p-2 inline-flex items-center opacity-75 dark:opacity-75 shadow"
+          className="rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-900 hover:bg-grey text-grey-darkest font-bold p-2 inline-flex items-center shadow"
           onClick={() => setDarkMode(!darkMode)}
         >
           <svg
