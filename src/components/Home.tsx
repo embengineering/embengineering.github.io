@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import info from '../info.json';
 import SocialMediaLink, { SocialMedia } from './SocialMediaLink';
+import useLocalStorage from '../localstorage-hook';
+import DOMPurify from 'dompurify';
 
 interface PersonalInfo {
   fullname: string;
   title: string;
   location: string;
-  descriptionLine1: string;
-  descriptionLine2: string;
+  description: string;
   email: string;
   resume: string;
   social: SocialMedia[];
@@ -16,7 +17,8 @@ interface PersonalInfo {
 const personalInfo: PersonalInfo = info;
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useLocalStorage<boolean>('dark', true);
+  const sanitizedHtml = DOMPurify.sanitize(personalInfo.description);
 
   useEffect(() => {
     if (darkMode) {
@@ -55,12 +57,10 @@ const Home = () => {
             </svg>
             {personalInfo.location}
           </p>
-          <p className="pt-8 text-sm hidden md:block">
-            {personalInfo.descriptionLine1}
-            <br />
-            <br />
-            {personalInfo.descriptionLine2}
-          </p>
+          <p
+            className="pt-8 text-sm hidden md:block"
+            dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
+          ></p>
           <div className="pt-12 pb-8">
             <a
               className="bg-green-700 hover:bg-green-900 text-white font-bold py-4 px-6 rounded-full"
