@@ -3,5 +3,5 @@
       "node_modules/**"
     ],
     "allowCompoundWords": true,
-    "words": ["Betancourt"]
+    "words": ["Betancourt", "embengineering"]
   }
