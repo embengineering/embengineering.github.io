@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
     "lint:fix": "npm run lint -- --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.0.17",
