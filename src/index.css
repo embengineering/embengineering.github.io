@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --background-image-screen-image: url('https://res.cloudinary.com/embengineering/image/upload/v1673896338/IMG_20210704_182759-EFFECTS.jpg');
+    --background-image-profile-mobile: url('https://res.cloudinary.com/embengineering/image/upload/v1673893549/profile-square.png');
+    --background-image-profile-desktop: url('https://res.cloudinary.com/embengineering/image/upload/v1640271532/profile-pic.jpg');
+}
