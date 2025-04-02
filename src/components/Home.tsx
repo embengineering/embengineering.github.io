@@ -87,7 +87,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="w-100 lg:basis-1/3">
+      <div className="w-100 hidden lg:flex lg:basis-1/3">
         <div className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block w-100 h-[600px] bg-cover bg-center bg-profile-desktop"></div>
       </div>
       <div className="fixed top-2 right-2">
