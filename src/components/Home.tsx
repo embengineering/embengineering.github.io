@@ -29,7 +29,7 @@ const Home = () => {
   }, [darkMode]);
 
   return (
-    <div className="max-w-7xl flex items-center justify-center px-6 pt-20 pb-6 lg:py-6 mx-auto">
+    <div className="max-w-7xl flex items-center justify-center px-6 pt-20 pb-6 lg:py-20 mx-auto">
       <div className="w-full lg:basis-2/3 rounded-lg lg:rounded-l-lg shadow-2xl bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <div className="p-4 md:p-12 text-center lg:text-left">
           <div className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-profile-mobile"></div>
