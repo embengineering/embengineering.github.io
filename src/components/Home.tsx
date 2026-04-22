@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import info from '../info.json';
-import SocialMediaLink, { SocialMedia } from './SocialMediaLink';
-import useLocalStorage from '../localstorage-hook';
-import DOMPurify from 'dompurify';
+import SocialMediaLink, { type SocialMedia } from './SocialMediaLink';
 
 interface PersonalInfo {
   fullname: string;
@@ -17,100 +15,116 @@ interface PersonalInfo {
 const personalInfo: PersonalInfo = info;
 
 const Home = () => {
-  const [darkMode, setDarkMode] = useLocalStorage<boolean>('dark', true);
-  const sanitizedHtml = DOMPurify.sanitize(personalInfo.description);
+  const [isDark, setIsDark] = useState(true); // Default to true, syncs in useEffect
 
   useEffect(() => {
-    if (darkMode) {
+    setIsDark(document.documentElement.classList.contains('dark'));
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    if (newTheme) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [darkMode]);
+    localStorage.setItem('dark', JSON.stringify(newTheme));
+  };
 
   return (
-    <div className="max-w-7xl flex items-center justify-center px-6 pt-20 pb-6 lg:py-20 mx-auto">
-      <div className="w-full lg:basis-2/3 rounded-lg lg:rounded-l-lg shadow-2xl bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-        <div className="p-4 md:p-12 text-center lg:text-left">
-          <div className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center bg-profile-mobile"></div>
-          <h1 className="text-3xl font-bold pt-8 lg:pt-0">
-            {personalInfo.fullname}
-          </h1>
-          <div className="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500"></div>
-          <p className="pt-4 text-base font-bold flex items-center justify-center lg:justify-start">
-            <svg
-              className="h-4 fill-current text-green-700 pr-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" />
-            </svg>
-            {personalInfo.title}
-          </p>
-          <p className="pt-2 text-gray-600 dark:text-gray-100 text-xs lg:text-sm flex items-center justify-center lg:justify-start">
-            <svg
-              className="h-4 fill-current text-green-700 pr-4"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-            >
-              <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z" />
-            </svg>
-            {personalInfo.location}
-          </p>
-          <p
-            className="pt-8 text-sm hidden md:block"
-            dangerouslySetInnerHTML={{ __html: sanitizedHtml }}
-          ></p>
-          <div className="pt-12 pb-8">
-            <a
-              className="bg-green-700 hover:bg-green-900 text-white font-bold py-4 px-6 rounded-full"
-              href={`mailto:${personalInfo.email}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Get In Touch
-            </a>
-            <a
-              className="text-green-700 dark:text-white underline font-bold py-4 px-6"
-              href={personalInfo.resume}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Resume
-            </a>
-          </div>
+    <div className="relative min-h-screen flex items-center justify-center p-4 sm:p-8 overflow-hidden font-sans">
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 z-0 bg-gray-50 dark:bg-gray-950 transition-colors duration-700">
+        <div className="absolute inset-0 bg-cover bg-center opacity-30 dark:opacity-10 mix-blend-overlay" style={{ backgroundImage: "var(--background-image-screen-image)" }}></div>
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-green-400/20 dark:bg-green-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-teal-400/20 dark:bg-teal-900/20 rounded-full blur-[120px] pointer-events-none"></div>
+      </div>
 
-          <div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
-            {personalInfo.social.map((m) => (
-              <SocialMediaLink key={m.title} {...m} />
-            ))}
+      {/* Theme Toggle */}
+      <button
+        onClick={toggleTheme}
+        className="fixed top-6 right-6 z-50 p-3 rounded-full glass hover:scale-110 hover:bg-white/20 dark:hover:bg-black/50 transition-all duration-300 group"
+        aria-label="Toggle Dark Mode"
+      >
+        {!isDark ? (
+          <svg className="w-6 h-6 text-gray-800 group-hover:text-yellow-500 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 4.22a1 1 0 011.415 0l.708.708a1 1 0 01-1.414 1.414l-.708-.708a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM14.929 15.636a1 1 0 010 1.415l-.707.707a1 1 0 01-1.415-1.414l.707-.707a1 1 0 011.415 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.22-4.22a1 1 0 01-1.415 0l-.708-.708a1 1 0 011.414-1.414l.708.708a1 1 0 010 1.414zM4 10a1 1 0 01-1 1H2a1 1 0 110-2h1a1 1 0 011 1zM5.071 4.364a1 1 0 010-1.415l.707-.707a1 1 0 011.415 1.414l-.707.707a1 1 0 01-1.415 0zM10 5a5 5 0 100 10 5 5 0 000-10z" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6 text-gray-200 group-hover:text-blue-400 transition-colors" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+          </svg>
+        )}
+      </button>
+
+      {/* Main Card Container */}
+      <div className="z-10 w-full max-w-4xl glass rounded-[2rem] overflow-hidden flex flex-col md:flex-row animate-fade-in-up opacity-0">
+        
+        {/* Left Column: Image */}
+        <div className="md:w-2/5 relative h-64 md:h-auto shrink-0">
+           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "var(--background-image-profile-desktop)" }}></div>
+           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-white/90 to-transparent dark:from-gray-900/90 dark:to-transparent"></div>
+        </div>
+
+        {/* Right Column: Content */}
+        <div className="md:w-3/5 p-8 md:p-12 lg:p-16 flex flex-col justify-center relative -mt-10 md:mt-0 bg-white/80 dark:bg-gray-900/80 md:bg-transparent md:dark:bg-transparent rounded-t-[2rem] md:rounded-t-none">
+          <div className="space-y-6">
+            <div className="space-y-2">
+              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white tracking-tight">
+                {personalInfo.fullname}
+              </h1>
+              <p className="text-lg md:text-xl font-medium text-green-600 dark:text-green-400">
+                {personalInfo.title}
+              </p>
+              <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 font-medium">
+                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"/>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                {personalInfo.location}
+              </div>
+            </div>
+
+            <div className="w-12 h-1 bg-green-500 rounded-full"></div>
+
+            <div 
+              className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm md:text-base"
+              dangerouslySetInnerHTML={{ __html: personalInfo.description }}
+            />
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-4">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold rounded-full hover:bg-green-600 dark:hover:bg-green-400 hover:text-white transition-colors duration-300 shadow-lg"
+              >
+                Get In Touch
+              </a>
+              <a
+                href={personalInfo.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="px-6 py-3 font-semibold text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
+              >
+                View Resume &rarr;
+              </a>
+            </div>
+
+            {/* Social Links Grid */}
+            <div className="pt-8 border-t border-gray-200 dark:border-gray-800">
+              <div className="flex flex-wrap gap-4">
+                {personalInfo.social.map((m) => (
+                  <SocialMediaLink key={m.title} {...m} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="w-100 hidden lg:flex lg:basis-1/3">
-        <div className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block w-100 h-[600px] bg-cover bg-center bg-profile-desktop"></div>
-      </div>
-      <div className="fixed top-2 right-2">
-        <button
-          className="rounded-full bg-gray-100 dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-900 hover:bg-grey text-grey-darkest font-bold p-2 inline-flex items-center shadow"
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          <svg
-            className="w-8 h-8 fill-gray-900 dark:fill-gray-100"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d={
-                !darkMode
-                  ? 'M12.048 21.963c-.308 0-.618-.015-.93-.043-2.66-.246-5.064-1.513-6.771-3.567s-2.512-4.651-2.266-7.311a10.004 10.004 0 0 1 9.038-9.038 1 1 0 0 1 .896 1.589 6.008 6.008 0 0 0 1.258 8.392c2.078 1.536 5.055 1.536 7.133 0a1 1 0 0 1 1.591.896 9.951 9.951 0 0 1-9.949 9.082zM9.315 4.438a8.006 8.006 0 0 0-5.244 6.787 7.954 7.954 0 0 0 1.813 5.849 7.95 7.95 0 0 0 5.417 2.854 7.95 7.95 0 0 0 8.266-5.243 8.01 8.01 0 0 1-2.729.476 7.946 7.946 0 0 1-4.755-1.565C9.174 11.443 8.145 7.68 9.315 4.438z'
-                  : 'M12 18c-3.309 0-6-2.691-6-6s2.691-6 6-6 6 2.691 6 6-2.691 6-6 6zm0-10c-2.206 0-4 1.794-4 4s1.794 4 4 4 4-1.794 4-4-1.794-4-4-4zm0-4a1 1 0 0 1-1-1V1a1 1 0 0 1 2 0v2a1 1 0 0 1-1 1zm0 20a1 1 0 0 1-1-1v-2a1 1 0 1 1 2 0v2a1 1 0 0 1-1 1zM5.64 6.64a.997.997 0 0 1-.707-.293l-1.42-1.42a.999.999 0 1 1 1.414-1.414l1.42 1.42A.999.999 0 0 1 5.64 6.64zm14.139 14.139a.997.997 0 0 1-.707-.293l-1.42-1.42a.999.999 0 1 1 1.414-1.414l1.42 1.42a.999.999 0 0 1-.707 1.707zM3 13H1a1 1 0 1 1 0-2h2a1 1 0 0 1 0 2zm20 0h-2a1 1 0 1 1 0-2h2a1 1 0 1 1 0 2zM4.22 20.779a.999.999 0 0 1-.707-1.707l1.42-1.42a.999.999 0 1 1 1.414 1.414l-1.42 1.42a.993.993 0 0 1-.707.293zM18.359 6.64a.999.999 0 0 1-.707-1.707l1.42-1.42a.999.999 0 1 1 1.414 1.414l-1.42 1.42a.997.997 0 0 1-.707.293z'
-              }
-            />
-          </svg>
-        </button>
+
       </div>
     </div>
   );
 };
+
 export default Home;

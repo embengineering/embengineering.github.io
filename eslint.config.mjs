@@ -12,7 +12,7 @@ export default [
     plugins: {
       react
     },
-    ignores: ['node_modules', 'dist']
+    ignores: ['node_modules', 'dist', '.astro']
   },
 
   eslintPluginPrettierRecommended,
