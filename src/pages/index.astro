@@ -1,0 +1,92 @@
+---
+import Home from '../components/Home';
+import '../index.css';
+
+const title = 'EMB Engineering - Software Engineer & Life Enthusiast';
+const description = 'EMB Engineering - Software Engineer & Life Enthusiast';
+const image = 'https://res.cloudinary.com/embengineering/image/upload/v1673896338/IMG_20210704_182759-EFFECTS.jpg';
+const url = 'https://embengineering.com';
+
+const personSchema = {
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  "name": "Emmanuel Morales Betancourt",
+  "jobTitle": "Software Engineer & Life Enthusiast",
+  "url": url,
+  "image": image,
+  "sameAs": [
+    "https://github.com/embengineering",
+    "https://twitter.com/embengineering",
+    "https://www.linkedin.com/in/embengineering/",
+    "https://www.instagram.com/embengineering/",
+    "https://medium.com/@embengineering"
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0015KC6Q0Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0015KC6Q0Q');
+    </script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/gif" href="/favicon.gif" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    
+    <meta name="author" content="Emmanuel Morales">
+    <meta name="keywords" content="html5,javascript,js,html,front-end,front end,ui,ux,react,reactjs,redux,angularjs,angular,.net,mvc,webapi,firebase,embengineering">
+    <meta name="language" content="English">
+    <meta name="publisher" content="embengineering">
+    <meta name="distribution" content="Global">
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content={title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Emmanuel Morales - Profile" />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="EMB Engineering" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@embengineering">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    <meta name="twitter:creator" content="@embengineering">
+    <meta name="twitter:image" content={image}>
+    <meta name="twitter:image:alt" content="Emmanuel Morales - Profile">
+
+    <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <!-- Instant Dark Mode Resolution -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('dark')) {
+          return JSON.parse(localStorage.getItem('dark')) ? 'dark' : 'light';
+        }
+        return 'dark'; // Default to dark for the premium look
+      })();
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body class="font-sans antialiased text-gray-900 bg-gray-50 dark:bg-gray-900 leading-normal tracking-wider min-h-screen transition-colors duration-500">
+    <noscript>You need to enable JavaScript to run this website.</noscript>
+    <Home client:load />
+  </body>
+</html>
