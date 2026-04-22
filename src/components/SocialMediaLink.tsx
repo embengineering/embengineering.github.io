@@ -7,9 +7,9 @@ export interface SocialMedia {
 
 const SocialMediaLink = ({ href, title, svgPath, username }: SocialMedia) => {
   return (
-    <a 
+    <a
       className="group flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 border border-transparent hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/30 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-md"
-      href={href} 
+      href={href}
       target="_blank"
       rel="noreferrer"
       title={username}
